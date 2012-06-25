@@ -1,0 +1,88 @@
+Rails console
+=============
+
+load named routes
+-----------------
+Rails 3:
+include Rails.application.routes.url_helpers
+default_url_options[:host] = 'whatever'
+
+Rails 2:
+include ActionController::UrlWriter
+default_url_options[:host] = 'whatever'
+
+
+GIT
+===
+
+Create new branch from remote branch
+------------------------------------
+http://stackoverflow.com/questions/67699/how-do-i-clone-all-remote-branches-with-git
+
+git checkout -b github_hook origin/github_hook
+
+
+Rebase 
+------
+(source: http://mislav.uniqpath.com/2010/07/git-tips/)
+
+# make `git pull` on master always use rebase
+$ git config branch.master.rebase true
+
+You can also set up an option to set the last property for every new tracked branch:
+(git config branch.autosetuprebase always) 
+
+# setup rebase for every tracking branch (! it should suffice to have automatic rebasing set up just for master)
+$ git config branch.autosetuprebase always
+or even as a global preset (in your ~/.gitconfig instead of your git repositories .git/config)
+$ git config --global branch.autosetuprebase always
+
+
+Rename git remote
+-----------------
+git remote rename origin new_origin_name
+
+List remote's commit history
+----------------------------
+git ls-remote heroku
+
+
+Heroku
+======
+
+DB reset
+--------
+heroku pg:reset SHARED_DATABASE # this will affect only the relevant app and you will be prompted again with more info
+(heroku pg:info #for DB info)
+
+heroku run rake db:migrate
+
+deployment history
+------------------
+heroku releases --app MY_HEROKU_APP
+Rel   Change                          By                    When
+----  ----------------------          ----------            ----------
+v171  Deploy c335b7d                  paul@railslove.com    18 hours ago
+v170  Deploy 711a64e                  paul@railslove.com    18 hours ago
+
+
+Helpers
+=======
+
+use helpers in models
+---------------------
+example:
+ActionController::Base.helpers.number_to_currency
+
+source:
+http://stackoverflow.com/questions/5176718/rails-3-how-to-use-the-number-to-currency-method-in-the-model-rather-than-vie
+
+
+Ruby
+====
+
+Float.ancestors
+ => [Float, JSON::Ext::Generator::GeneratorMethods::Float, Numeric, Comparable, Object, PP::ObjectMixin, FriendlyId::ObjectUtils, JSON::Ext::Generator::GeneratorMethods::Object, ActiveSupport::Dependencies::Loadable, Kernel, BasicObject]
+
+Numeric.descendants
+ => [BigDecimal, Date::Infinity, Integer, Fixnum, Float, Bignum, Rational, Complex]
