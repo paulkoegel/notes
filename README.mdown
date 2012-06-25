@@ -26,13 +26,13 @@ Rebase
 ------
 (source: http://mislav.uniqpath.com/2010/07/git-tips/)
 
-# make `git pull` on master always use rebase
+### make `git pull` on master always use rebase
 $ git config branch.master.rebase true
 
 You can also set up an option to set the last property for every new tracked branch:
 (git config branch.autosetuprebase always) 
 
-# setup rebase for every tracking branch (! it should suffice to have automatic rebasing set up just for master)
+### setup rebase for every tracking branch (! it should suffice to have automatic rebasing set up just for master)
 $ git config branch.autosetuprebase always
 or even as a global preset (in your ~/.gitconfig instead of your git repositories .git/config)
 $ git config --global branch.autosetuprebase always
