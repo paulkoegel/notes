@@ -65,6 +65,19 @@ Rel   Change                          By                    When
 v171  Deploy c335b7d                  paul@railslove.com    18 hours ago
 v170  Deploy 711a64e                  paul@railslove.com    18 hours ago
 
+Config Vars
+-----------
+add:
+heroku config:add GITHUB_USERNAME=joesmith
+
+list:
+heroku config
+
+Set Rails Environment to Staging
+--------------------------------
+heroku config:add RACK_ENV=staging --app YOUR_HEROKU_APP
+heroku config:add RAILS_ENV=staging --app YOUT_HEROKU_APP
+
 
 Helpers
 =======
