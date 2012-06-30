@@ -50,6 +50,15 @@ git ls-remote heroku
 Heroku
 ======
 
+create new heroku app
+---------------------
+heroku apps:create NAME_OF_YOUR_APP --stack cedar
+
+push a custom branch to Heroku
+------------------------------
+git push heroku custom_branch_name:master
+
+
 DB reset
 --------
 heroku pg:reset SHARED_DATABASE # this will affect only the relevant app and you will be prompted again with more info
@@ -78,6 +87,23 @@ Set Rails Environment to Staging
 heroku config:add RACK_ENV=staging --app YOUR_HEROKU_APP
 heroku config:add RAILS_ENV=staging --app YOUT_HEROKU_APP
 
+import remote heroku DB to local DB
+-----------------------------------
+heroku db:pull --app YOUR_HEROKU_APP_NAME
+This will overwrite your local development DB, back it up in case you need any of its data. You will be asked for confirmation before anything is overwritten.
+
+restart worker
+--------------
+
+heroku ps --app YOUR_HEROKU_APP_NAME
+should give:
+  Process       State               Command
+  ------------  ------------------  -------------------------------
+  worker.1      up for 20h          bundle exec rake TOUR_RAKE_TASK
+
+then run
+  heroku ps:restart worker.1 --app YOUR_HEROKU_APP_NAME
+
 
 Helpers
 =======
@@ -99,3 +125,11 @@ Float.ancestors
 
 Numeric.descendants
  => [BigDecimal, Date::Infinity, Integer, Fixnum, Float, Bignum, Rational, Complex]
+
+
+Firefox
+=======
+
+about:config
+------------
+security.warn_viewing_mixed
